@@ -9,7 +9,7 @@ class Bot:
     def __init__(self):
         memory = self.import(config.FILENAME)
 
-    def handle_commands(self, cmd):
+    def handleCommands(self, cmd):
         if cmd == self.commandlist[0]:
             print(self.commandlist)
         elif cmd == self.commandlist[1]:
@@ -49,8 +49,14 @@ class Bot:
         with open(fname, 'r') as f:
             for line in f:
                 splitLine = line.split()
-                    newMemory[str(splitLine[0])] = ",".join(splitLine[1:])
+                    newMemory[str(splitLine[0])] = ",".join(splitLine[1])
         return newMemory
 
-    def export(self, fname):
-        
+'''
+    def export(self, fname): # Will finish this part later
+'''
+
+bot = Bot()
+while True:
+    command = str(raw_input("Enter a command: ")
+    bot.handleCommands(command)
