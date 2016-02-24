@@ -4,10 +4,12 @@ import config
 
 class Bot:
 
+    memory = {}
     commandlist = ["commands", "add", "remove", "show", "import", "export"]
     
     def __init__(self):
-        memory = self.import(config.FILENAME)
+        newMemory = self.import(config.FILENAME)
+        self.memory.update(newMemory)
 
     def handleCommands(self, cmd):
         if cmd == self.commandlist[0]:
@@ -23,7 +25,8 @@ class Bot:
             ID = str(raw_input("Enter the identifier of the definition being shown: "))
             self.show(ID)
         elif cmd == self.commandlist[4]:
-            self.import(config.FILENAME)
+            new = self.import(config.FILENAME)
+            self.memory.update(new)
         elif cmd == self.commandlist[5]:
             self.export(config.FILENAME)
         else:
@@ -52,9 +55,14 @@ class Bot:
                     newMemory[str(splitLine[0])] = ",".join(splitLine[1])
         return newMemory
 
-'''
+
     def export(self, fname): # Will finish this part later
-'''
+        pairs = [(k, v) for (k, v) in self.memory.iteritems()]
+        with open(fname, 'w+') as f:
+            for p in pairs:
+                q = str(p)
+                q = q.translate(None, '()')
+                f.write("%s\n" % q)
 
 bot = Bot()
 while True:
