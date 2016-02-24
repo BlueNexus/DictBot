@@ -56,7 +56,7 @@ class Bot:
         return newMemory
 
 
-    def export(self, fname): # Will finish this part later
+    def export(self, fname):
         pairs = [(k, v) for (k, v) in self.memory.iteritems()]
         with open(fname, 'w+') as f:
             for p in pairs:
