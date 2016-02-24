@@ -52,9 +52,8 @@ class Bot:
         with open(fname, 'r') as f:
             for line in f:
                 splitLine = line.split()
-                    newMemory[str(splitLine[0])] = ",".join(splitLine[1])
+                newMemory[str(splitLine[0])] = ",".join(splitLine[1])
         return newMemory
-
 
     def export(self, fname):
         pairs = [(k, v) for (k, v) in self.memory.iteritems()]
@@ -66,5 +65,5 @@ class Bot:
 
 bot = Bot()
 while True:
-    command = str(raw_input("Enter a command: ")
+    command = str(raw_input("Enter a command: "))
     bot.handleCommands(command)
