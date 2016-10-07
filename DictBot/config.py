@@ -12,9 +12,3 @@ AUTOIMPORT = True
 # DO NOT EDIT BELOW THIS LINE
 # -----------------------------------
 # # # # # # # # # # # # # # # # # # #
-
-def FILENAME():
-    return FILENAME
-
-def AUTOIMPORT():
-    return AUTOIMPORT
