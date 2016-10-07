@@ -16,7 +16,7 @@ class Bot:
             print(self.commandlist)
         elif cmd == self.commandlist[1]:
             ID = str(input("Enter the identifier of the definition being added: "))
-            defn = str(input("Enter the definition of " + str(ID)))
+            defn = str(input("Enter the definition of " + str(ID) + ": "))
             self.add(ID, defn)
         elif cmd == self.commandlist[2]:
             ID = str(input("Enter the identifier of the definition being removed: "))
