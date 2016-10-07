@@ -8,24 +8,24 @@ class Bot:
     commandlist = ["commands", "add", "remove", "show", "import", "export"]
     
     def __init__(self):
-        newMemory = self.import(config.FILENAME)
+        newMemory = self.vimport(config.FILENAME)
         self.memory.update(newMemory)
 
     def handleCommands(self, cmd):
         if cmd == self.commandlist[0]:
             print(self.commandlist)
         elif cmd == self.commandlist[1]:
-            ID = str(raw_input("Enter the identifier of the definition being added: "))
-            defn = str(raw_input("Enter the definition of " + str(ID)))
+            ID = str(input("Enter the identifier of the definition being added: "))
+            defn = str(input("Enter the definition of " + str(ID)))
             self.add(ID, defn)
         elif cmd == self.commandlist[2]:
-            ID = str(raw_input("Enter the identifier of the definition being removed: "))
+            ID = str(input("Enter the identifier of the definition being removed: "))
             self.remove(ID)
         elif cmd == self.commandlist[3]:
-            ID = str(raw_input("Enter the identifier of the definition being shown: "))
+            ID = str(input("Enter the identifier of the definition being shown: "))
             self.show(ID)
         elif cmd == self.commandlist[4]:
-            new = self.import(config.FILENAME)
+            new = self.vimport(config.FILENAME)
             self.memory.update(new)
         elif cmd == self.commandlist[5]:
             self.export(config.FILENAME)
@@ -47,7 +47,7 @@ class Bot:
         else:
             print(str(ID) + " is not defined.")
 
-    def import(self, fname):
+    def vimport(self, fname):
         newMemory = {"ID": "Definition"}
         with open(fname, 'r') as f:
             for line in f:
@@ -65,5 +65,5 @@ class Bot:
 
 bot = Bot()
 while True:
-    command = str(raw_input("Enter a command: "))
+    command = str(input("Enter a command: "))
     bot.handleCommands(command)
